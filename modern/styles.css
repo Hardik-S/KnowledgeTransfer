@@ -1,0 +1,260 @@
+:root {
+  --bg: #060c1b;
+  --panel: rgba(12, 22, 48, 0.82);
+  --panel-strong: rgba(23, 40, 77, 0.9);
+  --line: rgba(255, 255, 255, 0.14);
+  --text: #eaf1ff;
+  --muted: #acb8d4;
+  --accent: #4de1ff;
+  --accent-2: #72f3c0;
+  --danger: #ff6a8c;
+  --ok: #89ff9b;
+  --font: "Trebuchet MS", "Segoe UI", "Verdana", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--text);
+  font-family: var(--font);
+  background: radial-gradient(circle at 15% 10%, rgba(82, 190, 255, 0.16), transparent 38%),
+    radial-gradient(circle at 90% 15%, rgba(114, 243, 192, 0.12), transparent 34%), var(--bg);
+}
+
+body {
+  padding: 24px;
+}
+
+.surface {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, rgba(22, 38, 75, 0.6), rgba(12, 22, 48, 0.65));
+  animation: rise 420ms ease-out;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+h1,
+h2 {
+  margin: 0 0 12px;
+}
+
+.kicker {
+  margin: 0 0 8px;
+  color: var(--accent-2);
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  max-width: 80ch;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.legacy-pane,
+.panel {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(15, 30, 60, 0.84), rgba(12, 22, 48, 0.72));
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 11px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #04152b;
+  background: linear-gradient(110deg, var(--accent), var(--accent-2));
+  font-weight: 700;
+}
+
+.panel-note {
+  margin-top: 0;
+  margin-bottom: 14px;
+  color: var(--muted);
+}
+
+.toolbar,
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.control {
+  display: grid;
+  gap: 6px;
+  min-width: 160px;
+  flex: 1;
+}
+
+label {
+  font-size: 0.93rem;
+  color: var(--muted);
+}
+
+input,
+select,
+textarea,
+button {
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(6, 13, 28, 0.6);
+  color: var(--text);
+  padding: 10px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border-color: transparent;
+  background: #0f2a57;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(6, 13, 28, 0.35);
+}
+
+#copy-summary,
+#export-json,
+#import-json,
+#seed-reset {
+  background: #0d3d5a;
+}
+
+.card-grid {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.packet-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  background: var(--panel);
+  position: relative;
+  overflow: hidden;
+}
+
+.packet-card h3 {
+  margin: 0 0 8px;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.88rem;
+  display: flex;
+  gap: 8px 14px;
+  flex-wrap: wrap;
+}
+
+.tags {
+  margin: 10px 0 12px;
+}
+
+.tag {
+  display: inline-block;
+  margin: 0 6px 6px 0;
+  border-radius: 999px;
+  border: 1px solid rgba(77, 225, 255, 0.5);
+  color: var(--accent);
+  font-size: 0.8rem;
+  padding: 2px 8px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.status-pill {
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.76rem;
+  border: 1px solid rgba(137, 255, 155, 0.4);
+  color: var(--ok);
+}
+
+.status-pill.review {
+  border-color: rgba(255, 106, 140, 0.44);
+  color: var(--danger);
+}
+
+.status-pill.draft {
+  border-color: rgba(255, 220, 133, 0.4);
+  color: #ffe39a;
+}
+
+.editor {
+  display: grid;
+  gap: 10px;
+}
+
+#status-line {
+  min-height: 1.2rem;
+  color: var(--accent-2);
+  margin-top: 8px;
+}
+
+@media (min-width: 980px) {
+  .toolbar {
+    align-items: end;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 740px) {
+  body {
+    padding: 14px;
+  }
+
+  .hero,
+  .legacy-pane,
+  .panel {
+    padding: 14px;
+  }
+}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>KnowledgeTransfer Rebuild</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="surface">
+      <header class="hero">
+        <p class="kicker">Legacy Repo Rebuilder</p>
+        <h1>KnowledgeTransfer Rebuild</h1>
+        <p class="subtitle">
+          Modernized surface for the legacy KnowledgeTransfer repo that preserves the
+          original pointer-to-doc workflow and layers structured knowledge handoff tooling
+          on top.
+        </p>
+      </header>
+
+      <main>
+        <section class="legacy-pane">
+          <h2>Original behavior preserved</h2>
+          <p>
+            The historical README behavior points collaborators to a Google Doc for
+            source knowledge packets. That behavior remains intact.
+          </p>
+          <a
+            id="legacy-link"
+            class="cta"
+            href="https://docs.google.com/document/d/15HTTg_nfR9Ae_lh0zfYaotHAgZnw_vv4O932TxgRHjI/edit?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open original Google Doc
+          </a>
+        </section>
+
+        <section class="panel">
+          <h2>Knowledge packet workspace</h2>
+          <p class="panel-note">
+            Seed your team handoffs, track owners, and keep quick summaries local for
+            synthetic demo workflows.
+          </p>
+          <div class="toolbar">
+            <div class="control">
+              <label for="query">Search</label>
+              <input id="query" type="search" placeholder="topic, owner, title, tag" />
+            </div>
+            <div class="control">
+              <label for="topic">Topic</label>
+              <select id="topic">
+                <option value="all">All topics</option>
+                <option value="ops">Ops</option>
+                <option value="architecture">Architecture</option>
+                <option value="handoff">Handoff</option>
+                <option value="infra">Infrastructure</option>
+              </select>
+            </div>
+            <div class="control">
+              <label for="sort">Sort</label>
+              <select id="sort">
+                <option value="updated">Most recently updated</option>
+                <option value="title">Title A-Z</option>
+                <option value="owner">Owner A-Z</option>
+              </select>
+            </div>
+            <div class="actions">
+              <button id="export-json">Export JSON</button>
+              <button id="import-json">Import JSON</button>
+              <button id="seed-reset">Reset seeds</button>
+            </div>
+            <input id="import-file" type="file" accept="application/json" hidden />
+          </div>
+
+          <div id="pack-grid" class="card-grid" aria-live="polite"></div>
+        </section>
+
+        <section class="panel">
+          <h2>Add / update packet</h2>
+          <form id="pack-form" class="editor" autocomplete="off">
+            <input type="hidden" id="editing-id" value="" />
+            <label>
+              Title
+              <input id="title" required />
+            </label>
+            <label>
+              Owner
+              <input id="owner" required />
+            </label>
+            <label>
+              Topic
+              <select id="topic-input" required>
+                <option value="ops">Ops</option>
+                <option value="architecture">Architecture</option>
+                <option value="handoff">Handoff</option>
+                <option value="infra">Infrastructure</option>
+              </select>
+            </label>
+            <label>
+              Status
+              <select id="status" required>
+                <option value="Draft">Draft</option>
+                <option value="Shared">Shared</option>
+                <option value="Needs review">Needs review</option>
+              </select>
+            </label>
+            <label>
+              Tags (comma-separated)
+              <input id="tags" placeholder="api, onboarding, security" />
+            </label>
+            <label>
+              Summary
+              <textarea id="summary" rows="4" required></textarea>
+            </label>
+            <div class="actions">
+              <button type="submit">Save packet</button>
+              <button type="button" id="copy-summary">Copy active summary</button>
+              <button type="button" id="clear-form">Clear</button>
+            </div>
+          </form>
+          <p id="status-line" role="status" aria-live="polite"></p>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
